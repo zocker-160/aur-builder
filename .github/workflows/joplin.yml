@@ -31,9 +31,12 @@ jobs:
       
     - name: build Joplin
       run: make build
-        
+      
+    - name: cleanup
+      run: make clean      
+      
     - name: save finished package
       uses: actions/upload-artifact@master
       with:
         name: Joplin
-        path: ./pack
+        path: ./

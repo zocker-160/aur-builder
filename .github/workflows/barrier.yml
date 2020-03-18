@@ -1,4 +1,4 @@
-name: Barrier AUR
+name: Barrier
 
 on:
   push:
@@ -33,7 +33,10 @@ jobs:
       run: make build
       
     - name: cleanup
-      run: make clean
+      run: |
+        make clean
+        mv ./pack/*.pkg.tar.* .
+        rm -rf ./pack
       
     - name: save finished package
       uses: actions/upload-artifact@master

@@ -1,0 +1,39 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: show number CPU cores
+      run: nproc
+    - name: show CPU information
+      run: lscpu
+    
+    
+    - uses: actions/checkout@v2
+    - name: prepare the Docker builder
+      run: make prepare
+      
+    - name: checkout Barrier AUR Git
+      run: git clone https://aur.archlinux.org/joplin.git ./pack
+
+    - name: change permissions
+      run: chmod 777 -R ./pack
+      
+    - name: build Joplin
+      run: make build
+        
+    - name: save finished package
+      uses: actions/upload-artifact@master
+      with:
+        name: Joplin
+        path: ./pack

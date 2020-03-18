@@ -17,7 +17,7 @@ WORKDIR /builder
 RUN chown -R builder /builder
 
 RUN echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-RUN echo 'MAKEFLAGS="-j14"' >> /etc/makepkg.conf
+RUN echo 'MAKEFLAGS="-j2"' >> /etc/makepkg.conf
 
 COPY zbuilder.sh /usr/bin
 RUN chmod +x /usr/bin/zbuilder.sh

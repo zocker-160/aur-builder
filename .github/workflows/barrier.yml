@@ -26,6 +26,9 @@ jobs:
     - name: checkout Barrier AUR Git
       run: git clone https://aur.archlinux.org/barrier.git ./pack
 
+    - name: change permissions
+      run: chmod 777 -R ./pack
+      
     - name: build Barrier
       run: make build
         

@@ -24,13 +24,13 @@ jobs:
       run: make prepare
       
     - name: checkout Barrier AUR Git
-      run: git clone https://aur.archlinux.org/barrier.git
+      run: git clone https://aur.archlinux.org/barrier.git ./pack
 
     - name: build Barrier
-      run: cd ./barrier && make build
+      run: make build
         
     - name: save finished package
       uses: actions/upload-artifact@master
       with:
         name: Barrier
-        path: ./barrier
+        path: ./pack

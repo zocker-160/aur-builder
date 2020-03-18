@@ -4,3 +4,5 @@ build:
 	docker run --name builder --user builder -v $(PWD)/pack:/builder makepkg
 clean:
 	docker rm builder
+	mkdir build
+	mv ./pack/*.pkg.tar.* ./build

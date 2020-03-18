@@ -13,6 +13,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: show number CPU cores
+      run: nproc
+    - name: show CPU information
+      run: lscpu
+    
+    
     - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: make
+    - name: prepare the Docker builder
+      run: make prepare
+      
+    - name: checkout Barrier AUR Git
+      run: git clone https://aur.archlinux.org/barrier.git
+
+    - name: build Barrier
+      run: cd ./barrier && make build
+        
+    - name: save finished package
+      uses: actions/upload-artifact@master
+      with:
+        name: Barrier
+        path: ./barrier

@@ -24,4 +24,4 @@ RUN chmod +x /usr/bin/zbuilder.sh
 
 VOLUME /builder
 
-CMD bash
+CMD zbuilder.sh

@@ -23,6 +23,8 @@ RUN echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf
 COPY zbuilder.sh /usr/bin
 RUN chmod +x /usr/bin/zbuilder.sh
 
+USER builder
+
 VOLUME /builder
 
 CMD zbuilder.sh

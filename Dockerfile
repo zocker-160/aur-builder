@@ -12,11 +12,6 @@ RUN rm -rf /var/cache/pacman/pkg/*
 
 RUN useradd -m -d /build -s /bin/bash builder
 
-WORKDIR /builder
-
-RUN chown -R builder /builder
-RUN chmod 777 -R /builder
-
 RUN echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf
 
@@ -24,7 +19,8 @@ COPY zbuilder.sh /usr/bin
 RUN chmod +x /usr/bin/zbuilder.sh
 
 USER builder
-
-VOLUME /builder
+WORKDIR /results
+VOLUME /results
+WORKDIR /build
 
 CMD zbuilder.sh

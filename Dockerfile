@@ -21,6 +21,5 @@ RUN chmod +x /usr/bin/zbuilder.sh
 USER builder
 WORKDIR /results
 VOLUME /results
-WORKDIR /build
 
 CMD zbuilder.sh

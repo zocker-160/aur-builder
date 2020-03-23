@@ -18,7 +18,7 @@ RUN chown -R builder /builder
 RUN chmod 777 -R /builder
 
 RUN echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-RUN echo 'MAKEFLAGS="-j2"' >> /etc/makepkg.conf
+RUN echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf
 
 COPY zbuilder.sh /usr/bin
 RUN chmod +x /usr/bin/zbuilder.sh

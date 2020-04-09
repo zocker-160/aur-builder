@@ -21,7 +21,7 @@ RUN chmod +x /usr/bin/zbuilder.sh
 USER builder
 RUN mkdir /results
 
+WORKDIR /results
 VOLUME /results
 
-#CMD zbuilder.sh
-ENTRYPOINT bash
+CMD zbuilder.sh

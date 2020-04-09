@@ -1,4 +1,4 @@
-name: Openboard
+name: Docker Container
 
 on:
   push:

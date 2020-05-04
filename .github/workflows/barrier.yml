@@ -21,19 +21,13 @@ jobs:
     
     - uses: actions/checkout@v2
     - name: prepare the Docker builder
-      run: make prepare
-      
-    - name: checkout Barrier AUR Git
-      run: git clone https://aur.archlinux.org/barrier.git ./pack
+      run: make prepare    
 
     - name: change permissions
-      run: chmod 777 -R ./pack
+      run: chmod 777 -R ./build
       
     - name: build Barrier
-      run: make build
-      
-    - name: cleanup
-      run: make clean
+      run: docker run --rm --user builder --net host -v ./build:/results makepkg barrier    
       
     - name: save finished package
       uses: actions/upload-artifact@master

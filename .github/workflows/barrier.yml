@@ -37,4 +37,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: Barrier
-        path: ./build
+        path: ~/build

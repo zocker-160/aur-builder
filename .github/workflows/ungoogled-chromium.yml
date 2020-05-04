@@ -36,5 +36,5 @@ jobs:
     - name: save finished package
       uses: actions/upload-artifact@master
       with:
-        name: ungoogled-chromium
+        name: ungoogled-chromium-81.0.4044.129-1
         path: ~/build

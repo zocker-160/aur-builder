@@ -1,0 +1,40 @@
+name: Ungoogled Chromium
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 700
+    
+    steps:
+    - name: show number CPU cores
+      run: nproc
+    - name: show CPU information
+      run: lscpu
+    
+    
+    - uses: actions/checkout@v2
+    - name: prepare the Docker builder
+      run: make prepare
+
+    - name: create folder
+      run: mkdir ~/build
+      
+    - name: change permissions
+      run: chmod 777 -R ~/build
+      
+    - name: build
+      run: docker run --rm --user builder --net host -v ~/build:/results makepkg ungoogled-chromium
+      
+    - name: save finished package
+      uses: actions/upload-artifact@master
+      with:
+        name: ungoogled-chromium
+        path: ~/build

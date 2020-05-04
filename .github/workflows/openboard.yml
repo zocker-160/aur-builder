@@ -1,4 +1,4 @@
-name: Joplin
+name: Openboard
 
 on:
   push:
@@ -11,7 +11,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    timeout-minutes: 30
+    
     steps:
     - name: show number CPU cores
       run: nproc
@@ -22,21 +23,18 @@ jobs:
     - uses: actions/checkout@v2
     - name: prepare the Docker builder
       run: make prepare
-      
-    - name: checkout Barrier AUR Git
-      run: git clone https://aur.archlinux.org/joplin.git ./pack
 
+    - name: create folder
+      run: mkdir ~/build
+      
     - name: change permissions
-      run: chmod 777 -R ./pack
+      run: chmod 777 -R ~/build
       
-    - name: build Joplin
-      run: make build
-      
-    - name: cleanup
-      run: make clean 
+    - name: build
+      run: docker run --rm --user builder --net host -v ~/build:/results makepkg openboard    
       
     - name: save finished package
       uses: actions/upload-artifact@master
       with:
-        name: Joplin
-        path: ./build
+        name: openboard
+        path: ~/build

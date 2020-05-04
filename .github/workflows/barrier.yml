@@ -27,7 +27,7 @@ jobs:
       run: chmod 777 -R ./build
       
     - name: build Barrier
-      run: docker run --rm --user builder --net host -v ./build:/results makepkg barrier    
+      run: docker run --rm --user builder --net host -v $(PWD)/build:/results makepkg barrier    
       
     - name: save finished package
       uses: actions/upload-artifact@master

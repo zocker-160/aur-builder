@@ -17,6 +17,8 @@ RUN echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf
 
 COPY zbuilder.sh /usr/bin
 RUN chmod +x /usr/bin/zbuilder.sh
+COPY zabuilder.sh /usr/bin
+RUN chmod +x /usr/bin/zabuilder.sh
 RUN mkdir /results
 RUN chown -R builder:builder /results
 

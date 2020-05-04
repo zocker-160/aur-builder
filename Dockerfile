@@ -24,6 +24,5 @@ WORKDIR /results
 VOLUME /results
 
 USER builder
-RUN cd ~
 
-CMD zbuilder.sh
+ENTRYPOINT ["zbuilder.sh"]

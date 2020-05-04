@@ -7,7 +7,7 @@ RUN pacman --noconfirm -Sy archlinux-keyring
 RUN pacman-key --init
 RUN pacman-key --populate archlinux
 
-RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc python git mercurial bzr subversion openssh wget yarn nano
+RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc python git mercurial bzr subversion openssh wget yarn nano tee
 RUN rm -rf /var/cache/pacman/pkg/*
 
 RUN useradd -m -d /build -s /bin/bash builder
@@ -24,5 +24,7 @@ WORKDIR /results
 VOLUME /results
 
 USER builder
+RUN cd ~
 
-CMD zbuilder.sh
+#CMD zbuilder.sh
+CMD bash

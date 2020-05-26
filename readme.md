@@ -39,4 +39,4 @@ cd ~
 zabuilder.sh # this builds the PKGBUILD inside the current folder + generates a log file + moves it to /results
 ```
 
-if successful you should see a pkg file and a log file inside your `builds` folder
+if successful you should see a pkg file and a log file inside your `build` folder

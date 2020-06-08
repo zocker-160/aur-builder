@@ -40,3 +40,7 @@ zabuilder.sh # this builds the PKGBUILD inside the current folder + generates a 
 ```
 
 if successful you should see a pkg file and a log file inside your `build` folder
+
+
+
+if you have any issues, feel free to create a new issue on github: [Issues · zocker-160/aur-builder · GitHub](https://github.com/zocker-160/aur-builder/issues)

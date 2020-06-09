@@ -20,19 +20,19 @@ mkdir build
 #### build AUR package
 
 ```bash
-docker run --rm --name builder --user builder --net host -v $(PWD)/build:/results makepkg <name_of_AUR_package>
+docker run --rm --name builder --user builder --net host -v $(pwd)/build:/results makepkg <name_of_AUR_package>
 ```
 
 or
 
 ```bash
-docker run --rm --name builder --user builder --net host -v $(PWD)/build:/results zocker160/aur-builder <name_of_AUR_package>
+docker run --rm --name builder --user builder --net host -v $(pwd)/build:/results zocker160/aur-builder <name_of_AUR_package>
 ```
 
 #### build any PKGBUILD
 
 ```bash
-docker run -it --name builder --user builder --net host -v $(PWD)/build:/results --entrypoint bash zocker160/aur-builder
+docker run -it --name builder --user builder --net host -v $(pwd)/build:/results --entrypoint bash zocker160/aur-builder
 ### inside the docker container
 cd ~
 # do whatever you want to prepare/pull/copy the PKGBUILD file
@@ -40,7 +40,5 @@ zabuilder.sh # this builds the PKGBUILD inside the current folder + generates a 
 ```
 
 if successful you should see a pkg file and a log file inside your `build` folder
-
-
 
 if you have any issues, feel free to create a new issue on github: [Issues · zocker-160/aur-builder · GitHub](https://github.com/zocker-160/aur-builder/issues)

@@ -23,7 +23,7 @@ RUN mkdir /results
 RUN chown -R builder:builder /results
 
 WORKDIR /results
-VOLUME /results
+#VOLUME /results
 
 USER builder
 

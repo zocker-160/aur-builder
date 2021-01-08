@@ -8,7 +8,7 @@ fi
 
 echo "Building $1 for archlinux...."
 
-docker run --name builder --user builder --cpus 8 --net host makepkg "$1"
+docker run --name builder --user builder --net host makepkg "$1"
 docker cp builder:/results .
 docker rm builder
 

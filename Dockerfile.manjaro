@@ -1,4 +1,4 @@
-FROM manjarolinux/base:latest
+FROM manjarolinux/base
 
 MAINTAINER zocker-160
 

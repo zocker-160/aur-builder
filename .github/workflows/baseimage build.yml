@@ -1,0 +1,41 @@
+name: Docker baseimage build
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+
+  archlinux:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build docker container
+      env:
+        HUB_NAME: ${{ secrets.DHUB_NAME }}
+        HUB_KEY: ${{ secrets.DHUB_PWD }}
+      run: |
+        docker login -u $HUB_NAME -p $HUB_KEY
+        docker build . -f Dockerfile --pull --no-cache --tag zocker160/aur-builder:latest
+        docker push zocker160/aur-builder:latest
+
+  manjaro:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: build docker container
+      env:
+        HUB_NAME: ${{ secrets.DHUB_NAME }}
+        HUB_KEY: ${{ secrets.DHUB_PWD }}    
+      run: |
+        docker login -u $HUB_NAME -p $HUB_KEY
+        docker build . -f Dockerfile.manjaro --pull --no-cache --tag zocker160/aur-builder:manjaro
+        docker push zocker160/aur-builder:manjaro

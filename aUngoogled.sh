@@ -1,1 +1,1 @@
-bash zlocal.sh ungoogled-chromium
+bash zlocal_hub.sh ungoogled-chromium

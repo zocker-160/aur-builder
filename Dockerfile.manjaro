@@ -3,9 +3,7 @@ FROM manjarolinux/base
 MAINTAINER zocker-160
 
 RUN pacman-key --init
-#RUN pacman --noconfirm -Sy archlinux-keyring
-#RUN pacman-key --populate archlinux
-RUN pacman-key --populate manjaro #archlinux
+RUN pacman-key --populate manjaro
 RUN pacman-mirrors --country Germany
 
 RUN pacman --noconfirm -Syyu

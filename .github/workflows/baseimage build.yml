@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: show Docker version
+      run: docker --version
     - uses: actions/checkout@v2
     - name: build docker container
       env:
@@ -30,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: show Docker version
+      run: docker --version    
     - uses: actions/checkout@v2
     - name: build docker container
       env:

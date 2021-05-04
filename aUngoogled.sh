@@ -1,1 +1,1 @@
-bash zlocal_hub.sh ungoogled-chromium
+bash zhubManjaro.sh ungoogled-chromium

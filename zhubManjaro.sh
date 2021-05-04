@@ -6,7 +6,7 @@ then
 	exit;
 fi
 
-echo "Building $1 for archlinux...."
+echo "Building $1 for Manjaro...."
 
 docker run --name builder --user builder --net host zocker160/aur-builder:manjaro "$1"
 docker cp builder:/results .

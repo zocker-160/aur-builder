@@ -1,6 +1,6 @@
 # Docker container to build AUR and PKGBUILD packages
 
-#### prepare container
+[![Docker Builder](https://github.com/zocker-160/aur-builder/actions/workflows/baseimage%20build.yml/badge.svg?branch=master)](https://github.com/zocker-160/aur-builder/actions/workflows/baseimage%20build.yml)
 
 ## Quickstart
 

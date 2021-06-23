@@ -2,32 +2,34 @@
 
 #### prepare container
 
+## Quickstart
+
+```bash
+mkdir build
+# Archlinux
+docker run --rm --name builder --user builder --net host -v $(pwd)/build:/results zocker160/aur-builder:latest <name_of_AUR_package>
+# Manjaro
+docker run --rm --name builder --user builder --net host -v $(pwd)/build:/results zocker160/aur-builder:manjaro <name_of_AUR_package>
+```
+
+## Using build scripts
 ```bash
 git clone https://github.com/zocker-160/aur-builder.git
 cd aur-builder
-make arch
-# for Manjaro
-make manjaro
-```
 
-##### or pull prebuild container from docker hub
-
-```bash
-docker pull zocker160/aur-builder:latest
-# or if you want to have a manjaro base
-docker pull zocker160/aur-builder:manjaro
-```
-
-#### build AUR package
-
-```bash
-# if you have build the container using the make command
-bash zlocal.sh <name_of_AUR_package>
 # if you want to use prebuild container
-## Arch
+## Archlinux
 bash zhub.sh <name_of_AUR_package>
 ## Manjaro
 bash zhubManjaro.sh <name_of_AUR_package>
+
+# if you want to build the container yourself
+## Archlinux
+make arch
+## Manjaro
+make manjaro
+
+bash zlocal.sh <name_of_AUR_package>
 ```
 
 #### build own / local PKGBUILD (not from AUR)

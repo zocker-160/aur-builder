@@ -7,10 +7,7 @@ RUN pacman --noconfirm -Sy archlinux-keyring
 RUN pacman-key --init
 RUN pacman-key --populate archlinux
 
-RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc python git mercurial bzr subversion openssh wget yarn nano
-# this would be needed for building icecat
-#RUN pacman --noconfirm -Syu pacaur
-#RUN pacaur -S --noedit --noconfirm perl-file-rename
+RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc python python3 git mercurial bzr subversion openssh wget yarn nano
 RUN rm -rf /var/cache/pacman/pkg/*
 
 RUN useradd -m -d /build -s /bin/bash builder
@@ -29,5 +26,9 @@ WORKDIR /results
 #VOLUME /results
 
 USER builder
+
+RUN git clone https://aur.archlinux.org/yay-bin.git
+RUN cd yay-bin && makepkg -sic --noconfirm --noprogressbar
+RUN rm -rf yay-bin
 
 ENTRYPOINT ["zbuilder.sh"]

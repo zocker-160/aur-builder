@@ -11,7 +11,7 @@ RUN pacman --noconfirm -Syyu
 RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc python python3 git mercurial bzr subversion openssh wget yarn nano yay
 RUN rm -rf /var/cache/pacman/pkg/*
 
-RUN useradd -m -d /build -s /bin/bash builder
+RUN useradd -m -d /build -s /bin/bash builder || true
 
 RUN echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN echo "MAKEFLAGS=\"-j$(nproc)\"" >> /etc/makepkg.conf

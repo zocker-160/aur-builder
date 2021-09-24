@@ -8,7 +8,7 @@ RUN pacman-mirrors --country Germany
 
 RUN pacman --noconfirm -Syyu
 
-RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc python python3 git mercurial bzr subversion openssh wget yarn nano yay
+RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc python git mercurial bzr subversion openssh wget yarn nano yay
 RUN rm -rf /var/cache/pacman/pkg/*
 
 RUN useradd -m -d /build -s /bin/bash builder || true

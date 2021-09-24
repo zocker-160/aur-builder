@@ -7,7 +7,7 @@ RUN pacman --noconfirm -Sy archlinux-keyring
 RUN pacman-key --init
 RUN pacman-key --populate archlinux
 
-RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc python python3 git mercurial bzr subversion openssh wget yarn nano
+RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc python python git mercurial bzr subversion openssh wget yarn nano
 RUN rm -rf /var/cache/pacman/pkg/*
 
 RUN useradd -m -d /build -s /bin/bash builder

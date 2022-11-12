@@ -4,6 +4,7 @@ MAINTAINER zocker-160
 
 RUN pacman --noconfirm -Syyu
 RUN pacman --noconfirm -Sy archlinux-keyring
+
 RUN pacman-key --init
 RUN pacman-key --populate archlinux
 

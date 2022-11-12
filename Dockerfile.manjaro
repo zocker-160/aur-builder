@@ -2,6 +2,9 @@ FROM manjarolinux/base
 
 MAINTAINER zocker-160
 
+RUN pacman --noconfirm -Syyu
+RUN pacman --noconfirm -Sy manjaro-keyring
+
 RUN pacman-key --init
 RUN pacman-key --populate manjaro
 RUN pacman-mirrors --country Germany

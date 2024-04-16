@@ -11,7 +11,7 @@ RUN pacman-mirrors --country Germany
 
 RUN pacman --noconfirm -Syyu
 
-RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc git python mercurial bzr subversion openssh wget yarn nano # yay
+RUN pacman --noconfirm -Syu --needed procps-ng gcc base-devel distcc git python mercurial bzr subversion openssh wget yarn nano yay
 RUN rm -rf /var/cache/pacman/pkg/*
 
 RUN useradd -m -d /build -s /bin/bash builder || true
@@ -31,8 +31,8 @@ WORKDIR /results
 
 USER builder
 
-RUN git clone https://aur.archlinux.org/yay-bin.git
-RUN cd yay-bin && makepkg -sic --noconfirm --noprogressbar
-RUN rm -rf yay-bin
+#RUN git clone https://aur.archlinux.org/yay-bin.git
+#RUN cd yay-bin && makepkg -sic --noconfirm --noprogressbar
+#RUN rm -rf yay-bin
 
 ENTRYPOINT ["zbuilder.sh"]
